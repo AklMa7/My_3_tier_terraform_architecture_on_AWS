@@ -1,13 +1,6 @@
 
 
 
-data "http" "my_ip" {
-  url = "https://api.ipify.org?format=text"
-}
-
-
-
-
 
 
 data "aws_eip" "public_subnet_1_1a_eip" {
@@ -21,3 +14,24 @@ data "aws_eip" "public_subnet_1_1b_eip" {
 
 
 
+
+
+
+
+data "http" "my_ip" {
+  url = "https://api.ipify.org?format=text"
+}
+
+
+
+
+data "aws_ami" "server_ami" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-kernel-5.10-hvm-2.0.20230628.0-x86_64-*"]
+  }
+
+  owners = ["137112412989"]
+}
